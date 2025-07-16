@@ -1,5 +1,6 @@
 class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
+   
+def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
         seen = {}
@@ -19,7 +20,7 @@ class Solution:
         return True
 
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        anagrams = [[]]
+        anagrams = []
         for i in range(len(strs)):
             found = False
             for j in range(len(anagrams)):
@@ -28,5 +29,7 @@ class Solution:
                     found = True
                     pass
             if not found:
-                anagrams.append(strs[i])
+                anagrams.append([])
+                anagrams[-1].append(strs[i])
         return anagrams
+
