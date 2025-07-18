@@ -5,15 +5,17 @@ class Solution:
                 return 0
             else:
                 return -1
-        upper = len(nums)
+        upper = len(nums) - 1
         lower = 0
-        while upper - lower > 0:
-            middle = int((upper + lower) / 2)
+        i = 0
+        while upper >= lower:
+            i += 1
+            middle = lower + (upper - lower) // 2
             print(upper, lower, middle)
             if nums[middle] == target:
                 return middle
             elif nums[middle] > target:
-                upper = middle
+                upper = middle - 1
             elif nums[middle] < target:
-                lower = middle
+                lower = middle + 1
         return -1
