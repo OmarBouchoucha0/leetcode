@@ -40,3 +40,4 @@ class Solution:
         if rest == 1:
             prev1.next = ListNode(1)
         return l1
+
