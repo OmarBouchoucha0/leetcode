@@ -14,13 +14,3 @@ class Solution:
             depth += self.maxDepth(root.left)
         elif root.right:
             depth += self.maxDepth(root.right)
-
-
-
-
-
-
-
-
-
-
