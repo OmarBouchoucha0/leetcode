@@ -10,8 +10,6 @@ class Solution:
         curr = root
         if curr:
             return 0
-        if not curr.left and not curr.right:
-            return 1
         depth = 0
         left = self.maxDepth(curr.left)
         right = self.maxDepth(curr.right)
