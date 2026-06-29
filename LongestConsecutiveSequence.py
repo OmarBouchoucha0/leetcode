@@ -1,20 +1,19 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        result = []
-        set_start = []
-        for i in range(len(nums)):
-            set_start.append([nums[i]])
-            for j in range(len(nums)):
-                if nums[j] == nums[i] - 1:
-                    set_start.pop()
-                    break
-        seq = set()
-        for i in range(len(set_start)):
-            curr = set_start[i]
-            seq.add(curr)
-            for j in range(len(nums)):
-                if nums[j] == curr + 1:
-                    curr = nums[j]
-                    seq.add(curr)
-            result.append(len(seq))
-        return max(result)
+        unique_nums = set(nums)
+        local_seq = 1
+        max_seq = 0
+        i = 0
+        j = 1
+        while i < len(nums):
+            if nums[i] + 1 in unique_nums and nums[i] - 1 not in unique_nums:
+                while nums[i] + j in unique_nums:
+                    unique_nums.discard(nums[i] + j)
+                    local_seq += 1
+                    j += 1
+            if local_seq > max_seq:
+                max_seq = local_seq
+            local_seq = 1
+            i += 1
+            j = 1
+        return max_seq
