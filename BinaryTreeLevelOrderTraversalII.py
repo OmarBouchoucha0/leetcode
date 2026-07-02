@@ -4,14 +4,12 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
-
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
         if root is None:
             return []
-        res = []
         curr = [root]
+        res = []
         while len(curr) > 0:
             next = []
             vals = []
@@ -23,4 +21,4 @@ class Solution:
                     next.append(node.right)
             curr = next
             res.append(vals)
-        return res
+        return res.reverse()
