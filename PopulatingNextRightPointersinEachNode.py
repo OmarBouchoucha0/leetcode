@@ -10,17 +10,20 @@ class Node:
 
 
 class Solution:
-    def connect(self, root: "Optional[Node]") -> "Optional[Node]":
+    def connect(self, root: "Node") -> "Node":
         if root is None:
             return root
         curr = [root]
         while len(curr) > 0:
             next = []
-            for i in range(len(curr)):
+            for i, node in enumerate(curr):
                 if i < len(curr) - 1:
                     curr[i].next = curr[i + 1]
-                if curr[i].left or curr[i].right:
-                    next.append(curr[i].left)
-                    next.append(curr[i].right)
+                else:
+                    curr[i].next = None
+                if node.left:
+                    next.append(node.left)
+                if node.right:
+                    next.append(node.right)
             curr = next
         return root
